@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Connection String used in web.config by the application to access the database." defaultValue="Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\aspnet-sandboxWeb-20160511085453.mdf;Initial Catalog=aspnet-sandboxWeb-20160511085453;Integrated Security=True" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="E:\\sandbox\\sandboxWeb\\sandboxWeb\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+  <parameter name="omproEntities-Web.config Connection String" description="omproEntities Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/EF.ompro.csdl|res://*/EF.ompro.ssdl|res://*/EF.ompro.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=mssql2.gear.host;initial catalog=ompro;persist security info=True;user id=ompro;password=Co31?i!8iF74;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="E:\\sandbox\\sandboxWeb\\sandboxWeb\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='omproEntities']/@connectionString" />
+  </parameter>
+</parameters>

@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="omproModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Bookmakers">
+    <Key>
+      <PropertyRef Name="BookmakerId" />
+    </Key>
+    <Property Name="BookmakerId" Type="int" Nullable="false" />
+    <Property Name="BookmakerName" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Competitions">
+    <Key>
+      <PropertyRef Name="CompetitionId" />
+    </Key>
+    <Property Name="CompetitionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CompetitionName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="OMCompetitionId" Type="int" Nullable="false" />
+    <Property Name="DefaultName" Type="bit" />
+  </EntityType>
+  <EntityType Name="CompetitionsNotFound">
+    <Key>
+      <PropertyRef Name="CompetitionId" />
+    </Key>
+    <Property Name="CompetitionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CompetitionName" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ExchangeMatches">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MatchId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="BookmakerId" Type="int" Nullable="false" />
+    <Property Name="CompetitionId" Type="int" Nullable="false" />
+    <Property Name="Team1Id" Type="int" Nullable="false" />
+    <Property Name="Team1Name" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Team2Id" Type="int" Nullable="false" />
+    <Property Name="Team2Name" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="LastUpdated" Type="datetime" Nullable="false" />
+    <Property Name="Time" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="CompetitionName" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Bet" Type="varchar" MaxLength="200" />
+    <Property Name="Odds" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="MoneyInMarket" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="URL" Type="varchar" MaxLength="500" />
+    <Property Name="MobileURL" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="ExchangeRaces">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RaceId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="BookmakerId" Type="int" Nullable="false" />
+    <Property Name="CompetitionId" Type="int" Nullable="false" />
+    <Property Name="CompetitionName" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Horse" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Odds" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="LastUpdated" Type="datetime" Nullable="false" />
+    <Property Name="Time" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="URL" Type="varchar" MaxLength="500" />
+    <Property Name="MobileURL" Type="varchar" MaxLength="500" />
+    <Property Name="MoneyInMarket" Type="decimal" Precision="10" Scale="2" />
+  </EntityType>
+  <EntityType Name="Matches">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MatchId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="BookmakerId" Type="int" Nullable="false" />
+    <Property Name="CompetitionId" Type="int" Nullable="false" />
+    <Property Name="Team1Id" Type="int" Nullable="false" />
+    <Property Name="Team1Name" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Team2Id" Type="int" Nullable="false" />
+    <Property Name="Team2Name" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="LastUpdated" Type="datetime" Nullable="false" />
+    <Property Name="Time" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="CompetitionName" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Bet" Type="varchar" MaxLength="200" />
+    <Property Name="Odds" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="MoneyInMarket" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="URL" Type="varchar" MaxLength="500" />
+    <Property Name="MobileURL" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="Races">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RaceId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="BookmakerId" Type="int" Nullable="false" />
+    <Property Name="CompetitionId" Type="int" Nullable="false" />
+    <Property Name="CompetitionName" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Horse" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Odds" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="LastUpdated" Type="datetime" Nullable="false" />
+    <Property Name="Time" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="URL" Type="varchar" MaxLength="500" />
+    <Property Name="MobileURL" Type="varchar" MaxLength="500" />
+    <Property Name="MoneyInMarket" Type="decimal" Precision="10" Scale="2" />
+  </EntityType>
+  <EntityType Name="Teams">
+    <Key>
+      <PropertyRef Name="TeamId" />
+    </Key>
+    <Property Name="TeamId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TeamName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="OMTeamId" Type="int" Nullable="false" />
+    <Property Name="DefaultName" Type="bit" />
+  </EntityType>
+  <EntityType Name="TeamsNotFound">
+    <Key>
+      <PropertyRef Name="TeamId" />
+    </Key>
+    <Property Name="TeamId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TeamName" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="omproModelStoreContainer">
+    <EntitySet Name="Bookmakers" EntityType="Self.Bookmakers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Competitions" EntityType="Self.Competitions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CompetitionsNotFound" EntityType="Self.CompetitionsNotFound" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ExchangeMatches" EntityType="Self.ExchangeMatches" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ExchangeRaces" EntityType="Self.ExchangeRaces" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Matches" EntityType="Self.Matches" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Races" EntityType="Self.Races" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Teams" EntityType="Self.Teams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TeamsNotFound" EntityType="Self.TeamsNotFound" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

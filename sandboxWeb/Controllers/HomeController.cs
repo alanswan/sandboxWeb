@@ -30,7 +30,7 @@ namespace sandboxWeb.Controllers
 
 
             betfair.RefreshDB();
-            betfair.NotFoundToDB();
+            //betfair.NotFoundToDB();
 
             return View();
         }
