@@ -1,11 +1,11 @@
-﻿using sandboxConsole.Helpers.Maintenance;
+﻿using sandboxWeb.Helpers.Maintenance;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace sandboxConsole.Models
+namespace sandboxWeb.Models
 {
     public class Competition
     {

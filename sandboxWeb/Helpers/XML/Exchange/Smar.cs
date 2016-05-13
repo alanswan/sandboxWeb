@@ -1,8 +1,8 @@
 ﻿using sandboxWeb.EF;
-using sandboxConsole.Helpers.DataManipulation;
-using sandboxConsole.Helpers.Maintenance;
-using sandboxConsole.Misc;
-using sandboxConsole.Models;
+using sandboxWeb.Helpers.DataManipulation;
+using sandboxWeb.Helpers.Maintenance;
+using sandboxWeb.Misc;
+using sandboxWeb.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -13,7 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
-namespace sandboxConsole.Helpers.XML.Exchange
+namespace sandboxWeb.Helpers.XML.Exchange
 {
     public class Smar : Company
     {

@@ -1,5 +1,6 @@
-﻿using sandboxConsole.Helpers.XML.Exchange;
-using sandboxConsole.Models;
+﻿using sandboxWeb.Helpers.XML.Exchange;
+using sandboxWeb.Models;
+using sandboxWeb.EF;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,27 +15,26 @@ namespace sandboxWeb.Controllers
     {
         public ActionResult Index()
         {
-            Betfair betfair = new Betfair();
+            omproEntities db = new omproEntities();
+
+            List<EF.Team> teams = db.Teams.ToList();
+            List<TeamsNotFound> newTeams = db.TeamsNotFounds.ToList();
+
+            List<EF.Competition> comps = db.Competitions.ToList();
+            List<CompetitionsNotFound> newComps = db.CompetitionsNotFounds.ToList();
+
+            Betfair betfair = new Betfair(teams, newTeams, comps, newComps);
             betfair.Login();
-            betfair.GetCompetitions();
-            betfair.GetEvents();
-            betfair.GetMarkets();
-            betfair.GetMarketBooks();
-            return View();
-        }
+            
+            betfair.ReadBetfairFootball("GBR");
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
+
+            betfair.RefreshDB();
+            betfair.NotFoundToDB();
 
             return View();
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
+       
     }
 }

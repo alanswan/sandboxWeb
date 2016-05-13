@@ -1,7 +1,7 @@
 ﻿using sandboxWeb.EF;
-using sandboxConsole.Helpers.Maintenance;
-using sandboxConsole.Misc;
-using sandboxConsole.Models;
+using sandboxWeb.Helpers.Maintenance;
+using sandboxWeb.Misc;
+using sandboxWeb.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
-namespace sandboxConsole.Helpers.XML.Exchange
+namespace sandboxWeb.Helpers.XML.Exchange
 {
     public class Betdaq : Company
     {

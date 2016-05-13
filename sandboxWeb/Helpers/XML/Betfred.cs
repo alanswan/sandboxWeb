@@ -1,7 +1,7 @@
 ﻿using sandboxWeb.EF;
-using sandboxConsole.Helpers.Maintenance;
-using sandboxConsole.Misc;
-using sandboxConsole.Models;
+using sandboxWeb.Helpers.Maintenance;
+using sandboxWeb.Misc;
+using sandboxWeb.Models;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
-namespace sandboxConsole.Helpers.XML
+namespace sandboxWeb.Helpers.XML
 {
     public class Betfred : Company
     {

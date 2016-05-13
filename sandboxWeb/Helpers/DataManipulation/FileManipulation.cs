@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace sandboxConsole.Helpers.DataManipulation
+namespace sandboxWeb.Helpers.DataManipulation
 {
     public class FileManipulation
     {

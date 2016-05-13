@@ -1,5 +1,5 @@
 ﻿
-using sandboxConsole.Models;
+using sandboxWeb.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using sandboxWeb.EF;
 
-namespace sandboxConsole.Helpers.Maintenance
+namespace sandboxWeb.Helpers.Maintenance
 {
     public class CompetitionMaintenance
     {

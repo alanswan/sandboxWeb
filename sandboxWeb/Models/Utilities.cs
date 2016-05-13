@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace sandboxConsole.Models
+namespace sandboxWeb.Models
 {
     public class BetfairLoginParams
     {
@@ -28,12 +28,24 @@ namespace sandboxConsole.Models
         public Filter Filter { get; set; }
         [JsonProperty(PropertyName = "maxResults")]
         public int MaxResults { get; set; }
+        [JsonProperty(PropertyName = "marketProjection")]
+        public string[] MarketProjection { get; set; }
     }
 
     public class BetfairMarketRequest
     {
-        [JsonProperty(PropertyName = "filter")]
-        public MarketBookFilter Filter { get; set; }
+        //[JsonProperty(PropertyName = "filter")]
+        //public MarketBookFilter Filter { get; set; }
+        //[JsonProperty(PropertyName = "maxResults")]
+        //public int MaxResults { get; set; }
+        [JsonProperty(PropertyName = "marketIds")]
+        public string[] MarketIds { get; set; }
+        [JsonProperty(PropertyName = "priceProjection")]
+        public PriceProjection PriceProjection { get; set; }
+        [JsonProperty(PropertyName = "matchProjection")]
+        public string MatchProjection { get; set; }
+        [JsonProperty(PropertyName = "orderProjection")]
+        public string OrderProjection { get; set; }
     }
 
 
@@ -41,7 +53,7 @@ namespace sandboxConsole.Models
     {
         [JsonProperty(PropertyName = "eventTypeIds")]
         public int[] EventTypeIds { get; set; }
-        [JsonProperty(PropertyName = "CompetitionIds")]
+        [JsonProperty(PropertyName = "competitionIds")]
         public int[] CompetitionIds { get; set; }
         [JsonProperty(PropertyName = "marketTypeCodes")]
         public string[] MarketTypeCodes { get; set; }
@@ -53,6 +65,10 @@ namespace sandboxConsole.Models
         public string[] MarketIds { get; set; }
         [JsonProperty(PropertyName = "priceProjection")]
         public PriceProjection PriceProjection { get; set; }
+        [JsonProperty(PropertyName = "matchProjection")]
+        public string MatchProjection { get; set; }
+        [JsonProperty(PropertyName = "orderProjection")]
+        public string OrderProjection { get; set; }
     }
 
     public class PriceProjection
@@ -60,7 +76,7 @@ namespace sandboxConsole.Models
         [JsonProperty(PropertyName = "priceData")]
         public string[] PriceData { get; set; }
         [JsonProperty(PropertyName = "virtualise")]
-        public bool Virtualise { get; set; }
+        public string Virtualise { get; set; }
     }
 
     public class BFCompetition
@@ -92,7 +108,7 @@ namespace sandboxConsole.Models
     public class EventDetails
     {
         [JsonProperty(PropertyName = "id")]
-        public int Id { get; set; }
+        public string Id { get; set; }
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
         [JsonProperty(PropertyName = "countryCode")]
@@ -100,7 +116,9 @@ namespace sandboxConsole.Models
         [JsonProperty(PropertyName = "timezone")]
         public string Timezone { get; set; }
         [JsonProperty(PropertyName = "openDate")]
-        public string OpenDate  { get; set; }
+        public DateTime OpenDate  { get; set; }
+        [JsonProperty(PropertyName = "venue")]
+        public string Venue { get; set; }
     }
 
     public class BFMarket
@@ -109,9 +127,71 @@ namespace sandboxConsole.Models
         public decimal MarketId { get; set; }
         [JsonProperty(PropertyName = "marketName")]
         public string MarketName { get; set; }
+        [JsonProperty(PropertyName = "marketStartTime")]
+        public DateTime MarketStartTime { get; set; }
         [JsonProperty(PropertyName = "totalMatched")]
-        public decimal totalMatched { get; set; }
+        public double TotalMatched { get; set; }
+        [JsonProperty(PropertyName = "runners")]
+        public List<Runner> Runners { get; set; }
+        [JsonProperty(PropertyName = "competition")]
+        public CompetitonDetails Competition { get; set; }
+        [JsonProperty(PropertyName = "event")]
+        public EventDetails Event { get; set; }
+
     }
+
+    public class Runner
+    {
+        [JsonProperty(PropertyName = "selectionId")]
+        public long SelectionId { get; set; }
+        [JsonProperty(PropertyName = "runnerName")]
+        public string RunnerName { get; set; }
+        [JsonProperty(PropertyName = "handicap")]
+        public double Handicap { get; set; }
+        [JsonProperty(PropertyName = "sortPriority")]
+        public int SortPriority { get; set; }
+        [JsonProperty(PropertyName = "status")]
+        public string RunnerStatus { get; set; }
+        [JsonProperty(PropertyName = "adjustmentFactor")]
+        public double AdjustmentFactor { get; set; }
+        [JsonProperty(PropertyName = "lastPriceTraded")]
+        public double LastPriceTraded { get; set; }
+        [JsonProperty(PropertyName = "totalMatched")]
+        public double TotalMatched { get; set; }
+        [JsonProperty(PropertyName = "removalDate")]
+        public DateTime RemovalDate { get; set; }
+        [JsonProperty(PropertyName = "ex")]
+        public ExchangePrices ExchangePrices { get; set; }
+    }
+
+    public class BFMarketBook {
+        [JsonProperty(PropertyName = "marketId")]
+        public decimal MarketId { get; set; }
+        [JsonProperty(PropertyName = "status")]
+        public string Status { get; set; }
+        [JsonProperty(PropertyName = "runners")]
+        public List<Runner> Runners { get; set; }
+    }
+
+
+    public class ExchangePrices
+    {
+        [JsonProperty(PropertyName = "availableToBack")]
+        public List<PriceSize> AvailableToBack { get; set; }
+        [JsonProperty(PropertyName = "availableToLay")]
+        public List<PriceSize> AvailableToLay { get; set; }
+        [JsonProperty(PropertyName = "tradedVolume")]
+        public List<PriceSize> TradedVolume { get; set; }
+    }
+
+    public class PriceSize
+    {
+        [JsonProperty(PropertyName = "price")]
+        public double Price { get; set; }
+        [JsonProperty(PropertyName = "size")]
+        public double Size { get; set; }
+    }
+
 
     public class MarketFilter
     {

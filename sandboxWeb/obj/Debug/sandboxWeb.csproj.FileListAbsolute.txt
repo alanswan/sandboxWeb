@@ -67,3 +67,7 @@ E:\sandbox\sandboxWeb\sandboxWeb\bin\Microsoft.Owin.Security.Twitter.xml
 E:\sandbox\sandboxWeb\sandboxWeb\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 E:\sandbox\sandboxWeb\sandboxWeb\obj\Debug\sandboxWeb.dll
 E:\sandbox\sandboxWeb\sandboxWeb\obj\Debug\sandboxWeb.pdb
+E:\sandbox\sandboxWeb\sandboxWeb\bin\EntityFramework.BulkInsert.dll
+E:\sandbox\sandboxWeb\sandboxWeb\bin\EntityFramework.MappingAPI.dll
+E:\sandbox\sandboxWeb\sandboxWeb\bin\EntityFramework.BulkInsert.pdb
+E:\sandbox\sandboxWeb\sandboxWeb\bin\EntityFramework.MappingAPI.pdb
