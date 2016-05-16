@@ -276,5 +276,11 @@ namespace sandboxWeb.Models
         EXECUTABLE
     }
 
+    public class JsonResponseException : Exception
+    {
+        public string responseText { get; set; }
+    
+    }
+
 
 }

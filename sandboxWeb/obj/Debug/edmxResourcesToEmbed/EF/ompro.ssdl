@@ -23,6 +23,13 @@
     <Property Name="CompetitionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="CompetitionName" Type="varchar" MaxLength="100" Nullable="false" />
   </EntityType>
+  <EntityType Name="Errors">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Error" Type="varchar(max)" Nullable="false" />
+  </EntityType>
   <EntityType Name="ExchangeMatches">
     <Key>
       <PropertyRef Name="Id" />
@@ -127,6 +134,7 @@
     <EntitySet Name="Bookmakers" EntityType="Self.Bookmakers" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Competitions" EntityType="Self.Competitions" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CompetitionsNotFound" EntityType="Self.CompetitionsNotFound" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Errors" EntityType="Self.Errors" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ExchangeMatches" EntityType="Self.ExchangeMatches" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ExchangeRaces" EntityType="Self.ExchangeRaces" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Matches" EntityType="Self.Matches" Schema="dbo" store:Type="Tables" />

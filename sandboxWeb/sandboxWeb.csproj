@@ -189,6 +189,9 @@
     <Compile Include="EF\CompetitionsNotFound.cs">
       <DependentUpon>ompro.tt</DependentUpon>
     </Compile>
+    <Compile Include="EF\Error.cs">
+      <DependentUpon>ompro.tt</DependentUpon>
+    </Compile>
     <Compile Include="EF\ExchangeMatch.cs">
       <DependentUpon>ompro.tt</DependentUpon>
     </Compile>

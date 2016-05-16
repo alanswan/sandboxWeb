@@ -62,6 +62,7 @@ namespace sandboxWeb.Helpers.XML.Exchange
                 var loginContent = new StringContent("username=kevin@wearedandify.com&password=forest99", Encoding.UTF8, "application/x-www-form-urlencoded");
                 var response = client.PostAsync("api/login", loginContent).Result;
                 LoginResponse = (BetfairLoginResponse)JsonConvert.DeserializeObject(response.Content.ReadAsStringAsync().Result, typeof(BetfairLoginResponse));
+                db.Errors.Add(new Error() {Error1 = LoginResponse.status + "|||" + LoginResponse.error});
             }
         }
 
@@ -198,26 +199,49 @@ namespace sandboxWeb.Helpers.XML.Exchange
         {
             using (var client = new HttpClient())
             {
-                System.Net.ServicePointManager.Expect100Continue = false;
-                client.BaseAddress = new Uri("https://api.betfair.com/exchange/betting/rest/v1.0/");
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                client.DefaultRequestHeaders.Add("X-Application", "MoHFRmBODsw9VxE1");
-                client.DefaultRequestHeaders.Add("X-Authentication", LoginResponse.token);
+                HttpResponseMessage response = new HttpResponseMessage();
+                try
+                {
+                    System.Net.ServicePointManager.Expect100Continue = false;
+                    client.BaseAddress = new Uri("https://api.betfair.com/exchange/betting/rest/v1.0/");
+                    client.DefaultRequestHeaders.Accept.Clear();
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                    client.DefaultRequestHeaders.Add("X-Application", "MoHFRmBODsw9VxE1");
+                    client.DefaultRequestHeaders.Add("X-Authentication", LoginResponse.token);
 
-                //football
-                int[] eventTypeIds = new int[1];
-                eventTypeIds[0] = 1;
+                    //football
+                    int[] eventTypeIds = new int[1];
+                    eventTypeIds[0] = 1;
 
-                BetfairEventRequest request = new BetfairEventRequest() {Filter = new Filter() {EventTypeIds = eventTypeIds}, MaxResults = 999 };
-                //BetfairEventRequest request = new BetfairEventRequest() { filter = new Filter() {  } };
+                    BetfairEventRequest request = new BetfairEventRequest()
+                    {
+                        Filter = new Filter() {EventTypeIds = eventTypeIds},
+                        MaxResults = 999
+                    };
+                    //BetfairEventRequest request = new BetfairEventRequest() { filter = new Filter() {  } };
 
-                var convertedObject = JsonConvert.SerializeObject(request);
-                var httpContent = new StringContent(convertedObject, Encoding.UTF8, "application/json");
-                //var httpContent = new StringContent("filter=", Encoding.UTF8, "application/x-www-form-urlencoded");
-                var response = client.PostAsync("listCompetitions/", httpContent).Result;
-                BfCompetitions = (List<BFCompetition>)JsonConvert.DeserializeObject(response.Content.ReadAsStringAsync().Result, typeof(List<BFCompetition>));
-                BfCompetitions = BfCompetitions.Where(x => CompetitionRegions.Contains(x.CompetitionRegion)).ToList();
+                    var convertedObject = JsonConvert.SerializeObject(request);
+                    var httpContent = new StringContent(convertedObject, Encoding.UTF8, "application/json");
+                    //var httpContent = new StringContent("filter=", Encoding.UTF8, "application/x-www-form-urlencoded");
+                    //error = client.PostAsync("listCompetitions/", httpContent).Result.ToString();
+                    response = client.PostAsync("listCompetitions/", httpContent).Result;
+                    BfCompetitions =
+                        (List<BFCompetition>)
+                            JsonConvert.DeserializeObject(response.Content.ReadAsStringAsync().Result,
+                                typeof (List<BFCompetition>));
+                    BfCompetitions =
+                        BfCompetitions.Where(x => CompetitionRegions.Contains(x.CompetitionRegion)).ToList();
+                }
+                catch (Exception e)
+                {
+                    db.Errors.Add(new Error() { Error1 = response.Content.ReadAsStringAsync().Result });
+                    db.SaveChanges();
+                }
+                //finally
+                //{
+                //    db.Errors.Add(new Error() { Error1 = response.ToString() });
+                //    db.SaveChanges();
+                //}
             }
         }
         public void GetEvents()

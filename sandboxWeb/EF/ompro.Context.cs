@@ -34,5 +34,6 @@ namespace sandboxWeb.EF
         public virtual DbSet<Race> Races { get; set; }
         public virtual DbSet<Team> Teams { get; set; }
         public virtual DbSet<TeamsNotFound> TeamsNotFounds { get; set; }
+        public virtual DbSet<Error> Errors { get; set; }
     }
 }

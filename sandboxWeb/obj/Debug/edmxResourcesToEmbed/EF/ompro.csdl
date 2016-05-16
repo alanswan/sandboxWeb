@@ -133,5 +133,13 @@
     <EntitySet Name="Races" EntityType="Self.Race" />
     <EntitySet Name="Teams" EntityType="Self.Team" />
     <EntitySet Name="TeamsNotFounds" EntityType="Self.TeamsNotFound" />
+    <EntitySet Name="Errors" EntityType="omproModel.Error" />
   </EntityContainer>
+  <EntityType Name="Error">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Error1" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
 </Schema>
